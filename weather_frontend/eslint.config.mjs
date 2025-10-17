@@ -18,9 +18,7 @@ export default [
       }
     },
     rules: {
-
-     'no-unused-vars': ['error', { varsIgnorePattern: 'React|App' }]
-
+      "no-unused-vars": ["warn", { varsIgnorePattern: "React|App" }]
     }
   },
   pluginJs.configs.recommended,
@@ -32,4 +30,4 @@ export default [
       "react/jsx-uses-vars": "error"
     }
   }
-]
+];

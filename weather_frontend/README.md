@@ -1,82 +1,79 @@
-# Lightweight React Template for KAVIA
+# Weather Check Pro (Frontend)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A modern React UI to check current weather and a 5-day forecast using the Ocean Professional style.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Search for a city to view current temperature, conditions, humidity, wind, and feels-like
+- 5-day forecast with day names, min/max temperatures, and weather icons
+- Graceful demo mode when API key is missing or a request fails
+- Responsive design with a modern, clean aesthetic
+- Service layer using OpenWeatherMap (metric units)
 
-## Getting Started
+## Quick Start
 
-In the project directory, you can run:
+1) Install dependencies:
+   npm install
 
-### `npm start`
+2) Configure environment:
+   - Copy .env.example to .env and set one of:
+     - VITE_OPENWEATHER_API_KEY (for Vite builds)
+     - REACT_APP_OPENWEATHER_API_KEY (for Create React App)
+   - If no key is set, the app will run in Demo Mode with a banner.
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3) Start development server:
+   npm start
 
-### `npm test`
+4) Build for production:
+   npm run build
 
-Launches the test runner in interactive watch mode.
+## Environment Variables
 
-### `npm run build`
+Provide at least one of the following:
+- VITE_OPENWEATHER_API_KEY
+- REACT_APP_OPENWEATHER_API_KEY
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+If both are set, VITE_OPENWEATHER_API_KEY takes precedence.
 
-## Customization
+See .env.example for details.
 
-### Colors
+## Demo Mode
 
-The main brand colors are defined as CSS variables in `src/App.css`:
+If an API key is missing or a request fails, the app uses a deterministic demo dataset and shows a top banner explaining how to configure the API key.
 
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
+## Styling
 
-### Components
+The app follows the Ocean Professional palette:
+- Primary: #2563EB
+- Secondary/Success: #F59E0B
+- Error: #EF4444
+- Background: #f9fafb
+- Surface: #ffffff
+- Text: #111827
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+Theme variables and component styles live in:
+- src/styles/theme.css
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+## Project Structure
 
-## Learn More
+- src/App.jsx: UI composition and state
+- src/components/SearchBar.jsx: Debounced search input
+- src/components/WeatherCard.jsx: Current conditions card
+- src/components/ForecastList.jsx: 5-day forecast grid
+- src/components/InfoStat.jsx: Metric pill
+- src/services/weatherApi.js: OpenWeather service and configuration detection
+- src/utils/demoData.js: Demo fallback data
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Notes
 
-### Code Splitting
+- API: https://api.openweathermap.org/data/2.5
+- Units: metric
+- Icons: https://openweathermap.org/img/wn/{icon}@2x.png
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Scripts
 
-### Analyzing the Bundle Size
+- npm start - start dev server
+- npm test - run tests
+- npm run build - build for production
+- npm run eject - CRA eject
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
